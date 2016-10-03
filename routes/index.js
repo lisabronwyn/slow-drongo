@@ -1,9 +1,11 @@
-const express = require('express');
-const router = express.Router();
+const express = require('express')
+const router = express.Router()
+const { Book } = require('../database/db')
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Express' });
-});
+router.get('/', ( request, response ) => {
 
-module.exports = router;
+  Book.getAll().then( books => response.render( 'index', { books } ) )
+})
+
+module.exports = router
