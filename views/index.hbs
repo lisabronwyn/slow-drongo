@@ -1,2 +1,15 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<h1>Welcome to the SLOW-DRONGO bookstore</h1>
+
+<div class="books">
+  <ul style="list-style-type:none">
+
+    {{#each books}}
+      <li>{{title}}</li>
+      <li>{{description}}<l/i>
+      <li><img src="{{img_url}}" width="100px" height="100px" alt="Image" /></li>
+    {{else}}
+      <h1>Not Found</h1>
+    {{/each}}
+
+  </ul>
+</div>
