@@ -21,7 +21,7 @@ const getAuthor = `
 Book = {
   getAll: () => db.any( getAllBooks ),
   getBook: book_id => db.one( getBook, [ book_id ] ),
-  getAuthor: book_id => db.one( getAuthor, [ book_id ] )
+  getAuthor: book_id => db.any( getAuthor, [ book_id ] )
 }
 
 module.exports = { Book }
