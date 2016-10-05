@@ -10,11 +10,14 @@ router.get('/', ( request, response ) => {
 router.get('/book/:book_id', ( request, response ) => {
   const { book_id } = request.params
 
+  console.log( 'Id', book_id )
+
   Promise.all([ Book.getBook( book_id ), Book.getAuthor( book_id ) ])
     .then( data => {
-      const [ book, author ] = data
+      const [ book, authors ] = data
 
-      response.send( data )
+      //response.send(data)
+      response.render( "bookDetails", {book, authors} )
     })
 })
 

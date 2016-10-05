@@ -1,0 +1,18 @@
+<h1>Welcome to the SLOW-DRONGO bookstore</h1>
+
+<div class="books">
+  <ul style="list-style-type:none">
+
+    <a href="/">Home</a>
+
+    <h2>{{book.title}}</h2>
+    <li>{{book.description}}</li>
+    <li><img src="{{book.img_url}}" width="400px" height="300px" alt="Image" /></li>
+
+    {{#each authors}}
+      <h3>Author: {{name}}</h3>
+      <li><img src="{{img_url}}" width="200px" height="300px" alt="Image" /></li>
+    {{/each}}
+
+  </ul>
+</div>
