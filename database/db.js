@@ -4,6 +4,7 @@ const pgp = require('pg-promise')();
 const db = pgp( connectionString );
 
 const getAllBooks = 'SELECT * FROM books'
+const getAllAuthors = 'SELECT * FROM authors'
 const getAuthor = 'SELECT * FROM authors WHERE id=$1'
 const getBook = 'SELECT * FROM books WHERE id=$1'
 const getAuthorByBookID = `
@@ -38,6 +39,7 @@ Book = {
 }
 
 Author = {
+  getAll: () => db.any( getAllAuthors ),
   getAuthor: author_id => db.one( getAuthor, [ author_id]),
   getBook: author_id => db.any( getBooksByAuthorID, [author_id])
 }
