@@ -10,8 +10,10 @@
     <li><img src="{{book.img_url}}" width="400px" height="300px" alt="Image" /></li>
 
     {{#each authors}}
-      <h3>Author: {{name}}</h3>
-      <li><img src="{{img_url}}" width="200px" height="300px" alt="Image" /></li>
+      <a href="/author/{{id}}">
+        <h3>Author: {{name}}</h3>
+        <li><img src="{{img_url}}" width="200px" height="300px" alt="Image" /></li>
+      </a>
     {{/each}}
 
   </ul>
