@@ -1,10 +1,18 @@
 const express = require('express')
 const router = express.Router()
-const { Book, Author } = require('../database/db')
+const { Book, Author, Search } = require('../database/db')
 
 /* GET home page. */
 router.get('/', ( request, response ) => {
   Book.getAll().then( books => response.render( 'index', { books } ) )
+})
+
+router.get('/search-books', ( request, response ) => {
+  const { search_query } = request.query
+
+  Search.forBooks( search_query ).then( books => {
+    response.send( books )
+  })
 })
 
 router.get('/authors/list', (request, response) => {

@@ -1,18 +1,25 @@
-<h1>Welcome to the SLOW-DRONGO bookstore</h1>
-
-<div class="books">
-  <ul style="list-style-type:none">
-    <a href="/authors/list">Authors</a>
-
-    {{#each books}}
-      <a href="/book/{{id}}">
-        <h3>{{title}}</h3>
-        <li>{{description}}</li>
-        <li><img src="{{img_url}}" width="400px" height="300px" alt="Image" /></li>
-      </a>
-    {{else}}
-      <h1>Not Found</h1>
-    {{/each}}
-
-  </ul>
+<!-- NAVIGATION -->
+<div class="container">
+  <form role="search" action="/search-books" method="get">
+    <div class="form-group form-group-default">
+      <input type="text" class="form-control input-default" id="inputdefault" name="search_query" placeholder="author or title or genre" />
+    </div>
+    <button type="submit" class="btn-zoomshift">
+      <span class="glyphicon glyphicon-search" aria-hidden="true" /></span>
+    </button>
+  </form>
 </div>
+
+
+<a href="/authors/list">Authors</a>
+
+{{#each books}}
+  <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+    <p>{{title}}</p>
+    <a class="thumbnail" href="#">
+      <img class="img-responsive" src="{{img_url}}" width="300px" height="200px" alt="images">
+    </a>
+  </div>
+{{else}}
+  <h1>Not Found</h1>
+{{/each}}
