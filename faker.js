@@ -46,10 +46,21 @@ const findAuthors = () => {
   return db.any( sql )
 }
 
+const findGenres = () => {
+  const sql = 'SELECT * FROM genres'
+  return db.any( sql )
+
+}
 const bookAuthors = ( ids ) => {
   const sql = 'INSERT INTO book_authors( book_id, author_id ) VALUES ( $1, $2 )'
 
   db.any( sql, [ ids.book_id, ids.author_id ])
+}
+
+const bookGenres = ( ids ) => {
+  const sql = 'INSERT INTO book_genres( book_id, genre_id ) VALUES ( $1, $2 )'
+
+  db.any( sql, [ ids.book_id, ids.genre_id ])
 }
 
 const generateBookAuthors = () => {
@@ -64,6 +75,27 @@ const generateBookAuthors = () => {
             bookAuthors({
               book_id: faker.random.arrayElement( books ).id,
               author_id: faker.random.arrayElement( authors ).id
+            })
+          )
+        }
+
+        Promise.all( queries )
+      })
+  })
+}
+
+const generateBookGenres = () => {
+  findBooks().then( books => {
+    Promise.resolve( findGenres() )
+      .then( genres => {
+        const queries = []
+        console.log( genres, books );
+
+        for( let i = 30; i >= 0; i-- ) {
+          queries.push(
+            bookGenres({
+              book_id: faker.random.arrayElement( books ).id,
+              genre_id: faker.random.arrayElement( genres ).id
             })
           )
         }
