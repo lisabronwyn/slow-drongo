@@ -6,15 +6,15 @@
     <a href="/">Home</a>
 
 
-    <h2>{{book.title}}</h2>
-    <li>{{book.description}}</li>
-    <li><img src="{{book.img_url}}" width="400px" height="300px" alt="Image" /></li>
-
+      <h1>List of All Authors</h1>
     {{#each authors}}
       <a href="/author/{{id}}">
-        <h3>Author: {{name}}</h3>
+        <h3>{{name}}</h3>
+        <li>{{bio}}</li>
         <li><img src="{{img_url}}" width="200px" height="300px" alt="Image" /></li>
       </a>
+    {{else}}
+      <h1>Not Found</h1>
     {{/each}}
 
   </ul>

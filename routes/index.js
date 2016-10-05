@@ -7,6 +7,12 @@ router.get('/', ( request, response ) => {
   Book.getAll().then( books => response.render( 'index', { books } ) )
 })
 
+router.get('/authors/list', (request, response) => {
+  Author.getAll().then( authors => response.render('authorList', {authors} ))
+
+
+})
+
 router.get('/book/:book_id', ( request, response ) => {
   const { book_id } = request.params
 
