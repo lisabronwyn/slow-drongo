@@ -1,10 +1,19 @@
 const express = require('express')
 const router = express.Router()
-const { Book, Author, Genre } = require('../database/db')
+
+const { Book, Author, Search, Genre } = require('../database/db')
 
 /* GET home page. */
 router.get('/', ( request, response ) => {
   Book.getAll().then( books => response.render( 'index', { books } ) )
+})
+
+router.get('/search-books', ( request, response ) => {
+  const { search_query } = request.query
+
+  Search.forBooks( search_query ).then( books => {
+    response.send( books )
+  })
 })
 
 router.get('/authors/list', (request, response) => {
@@ -13,7 +22,7 @@ router.get('/authors/list', (request, response) => {
 
 router.get('/genre/list', (request, response) => {
   Genre.getAll().then( genres => response.render('genreList', {genres} ))
-})  
+})
 
 router.get('/book/:book_id', ( request, response ) => {
   const { book_id } = request.params
@@ -48,8 +57,8 @@ router.get('/genre/:genre_id', (request, response) => {
       const [genre, books] = data
 
      // response.send(data)
- 
-    response.render( "genreDetails", {genre, books})     
+
+    response.render( "genreDetails", {genre, books})
 
     })
 })

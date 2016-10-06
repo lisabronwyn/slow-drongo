@@ -36,6 +36,21 @@ const generateBooks = () => {
   }
 }
 
+const fakeBook = genre => {
+  const sql = 'INSERT INTO genres( title ) VALUES ( $1 )'
+  db.none( sql, [ genre.title ] )
+}
+
+const generateBooks = () => {
+  for( let i = 30; i >= 0; i-- ) {
+    fakeBook({
+      title: faker.internet.domainName(),
+      description: faker.lorem.paragraph(),
+      img_url: faker.image.people()
+    })
+  }
+}
+
 const findBooks = () => {
   const sql = 'SELECT * FROM books'
   return db.any( sql )
