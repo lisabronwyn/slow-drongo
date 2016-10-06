@@ -1,28 +1,22 @@
+
 body {
   padding: 40px;
   background-image: url(https://hd.unsplash.com/photo-1457369804613-52c61a468e7d);
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-.nav {
-  color: black;
-}
-
-a {
-  color: #00B7FF;
+  color: gray;
 }
 
 h1, .page-header {
   font-family: 'Open Sans', Georgia, Times, serif;
   font-size: 50px;
-  color: white;
+  color: #002366;
   line-height: 60px;
 }
 
 p {
-  font-family: 'Oswald', Helvetica, Arial, sans-serif;
-  font-size: 31px;
-  color: white;
+  font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+  font-size: 22px;
+  color: #002366;
   font-weight: bolder;
   line-height: 25px;
 }
@@ -42,4 +36,76 @@ p {
   color: #FFF !important;
   text-shadow: 1px 1px 0 #E34141;
   -webkit-font-smoothing: antialiased;
+}
+
+#nav { width: 100%; margin: 0 auto; overflow:hidden;  }
+
+#nav a:hover {
+  background: #464749;
+  text-decoration: none;
+}
+
+#nav ul {
+  list-style: NONE;
+  color: #EEE;
+  width: 100%;
+  position: fixed;
+  top: 0%;
+  background-color: #222;
+  z-index: 55;
+  margin: 0;
+  padding: 0;
+  border-bottom: 1px solid #333;
+}
+
+.form-wrapper {
+  padding: 31px;
+  margin-top: 0px 4px;
+  position: relative;
+  float: right;
+  background-repeat: repeat-x;
+  /*border-color: #F05A5A #F05A5A hsl(0, 84%, 62%);*/
+  color: #999 !important;
+  text-shadow: 1px 1px 0 #E34141;
+  -webkit-font-smoothing: antialiased;
+}
+
+#nav ul li {
+  float: LEFT;
+  width: 8.97%;
+  padding: 0;
+  border: 1px SOLID #222;
+  background-color: #222;
+  text-align: CENTER;
+  font-size: 125%;
+}
+
+#nav ul li a {
+  display: BLOCK;
+  color: #EEE;
+  padding: 25.5% 0%;
+}
+
+body {
+  padding: 0;
+  margin:0;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url(http://www.clearskyy.net/crumpocolypse/upload/dark_wall.png);
+}
+
+a {
+  text-decoration: none;
+  font-family: "Century Gothic",
+    CenturyGothic, AppleGothic, sans-serif;
+}
+
+a {
+  color: #c3ccdb;
+}
+
+.authors {
+  color: gray;
+  padding: 0px;
+  font-size: 39px;
+  text-align: right;
 }

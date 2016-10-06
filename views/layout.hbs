@@ -4,37 +4,41 @@
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-  </head>
+    </head>
   <body>
-    <nav class="navbar navbar-inverse">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-3">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Brand</a>
+
+    <div id="nav">
+	<!-- main nav -->
+		<ul>
+	  <li>
+      <a href="">Bookstore</a>
+	  </li>
+	  <li>
+      <a href="/authors/list" class="">AUTHORS</a>
+	  </li>
+	  <li>
+		  <a href="/genres/" class="">GENRES</a>
+    </li>
+
+    <div class="container">
+      <form role="search" action="/search-books" method="get">
+        <div class="form-group form-group-default">
+          <input type="text" class="form-control input-default" id="inputdefault" name="search_query" placeholder="author or title or genre" />
         </div>
+        <button type="submit" class="btn-zoomshift">
+          <span class="glyphicon glyphicon-search" aria-hidden="true" /></span>
+        </button>
+      </form>
+    </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="navbar-collapse-3">
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Works</a></li>
-            <li><a href="#">News</a></li>
-            <li><a href="#">Contact</a></li>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav><!-- /.navbar -->
-
+<!-- <form role="search" action="/search-books" method="get">
+      <form class="form-wrapper">
+    	<input type="text" placeholder="author or genre or title">
+  	  <button type="button" class="btn-zoomshift">Search</button>
+  </form> -->
+  </ul>
 
     {{{body}}}
   </body>
