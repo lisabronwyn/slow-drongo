@@ -63,5 +63,26 @@ router.get('/genre/:genre_id', (request, response) => {
     })
 })
 
+router.get('/book/new/create', (request, response) => {
+  Promise.all([Author.getAll(), Genre.getAll()])
+    .then(data => {
+      const [authors, genres] = data
+        response.render('create-book', {authors, genres})
+
+    })
+})
+
+router.post('/book/new/create', (request, response) => {
+  const book = request.body
+  const author_id = parseInt(book.author_id)
+  const genre_id = parseInt(book.genre_id)
+
+  Book.insert(book)
+    .then(book => {
+      const book_id = book.id
+      Promise.all([Book.joinAuthor(book_id, author_id), Book.joinGenre(book_id, genre_id)])
+      response.redirect(`/book/${book_id}`)
+    })
+})
 
 module.exports = router

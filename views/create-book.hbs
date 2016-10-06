@@ -1,0 +1,19 @@
+<form action="/book/new/create" method="post">
+  
+  <input type="text" name="title"/>
+  <input type="text" name="description"/>
+
+  <select name="author_id">
+    {{#each authors}}
+    <option value="{{id}}">{{name}}</option>
+    {{/each}}
+  </select>
+
+  <select name="genre_id">
+    {{#each genres}}
+    <option value="{{id}}">{{genre}}</option>
+    {{/each}}
+  </select>
+
+  <button type="submit"> submit</button>
+</form>
