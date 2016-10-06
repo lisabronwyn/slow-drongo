@@ -86,7 +86,7 @@ const Search = {
       LEFT JOIN genres ON genres.id=book_genres.genre_id
       WHERE LOWER(books.title)  LIKE $${variables.length}
       OR LOWER(authors.name) LIKE $${variables.length}
-      OR LOWER(genres.title) LIKE $${variables.length}
+      OR LOWER(genres.genre) LIKE $${variables.length}
       ORDER BY books.id ASC
       `
     }
