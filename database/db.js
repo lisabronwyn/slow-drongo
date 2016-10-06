@@ -9,6 +9,10 @@ const getAllGenres = 'SELECT * FROM genres'
 const getAuthor = 'SELECT * FROM authors WHERE id=$1'
 const getGenre = 'SELECT * FROM genres WHERE id=$1'
 const getBook = 'SELECT * FROM books WHERE id=$1'
+const insertBook = 'insert into books ( title, description ) values ($1,$2) returning id'
+const joinAuthor = `insert into book_authors ( book_id, author_id ) values ($1,$2)`
+const joinGenre = `insert into book_genres (book_id, genre_id) values ($1,$2)`
+
 const getAuthorByBookID = `
   SELECT
     *
@@ -94,7 +98,10 @@ const Search = {
 const Book = {
   getAll: () => db.any( getAllBooks ),
   getBook: book_id => db.one( getBook, [ book_id ] ),
-  getAuthor: book_id => db.any( getAuthorByBookID, [ book_id ] )
+  getAuthor: book_id => db.any( getAuthorByBookID, [ book_id ] ),
+  insert: book => db.one( insertBook, [book.title, book.description]),
+  joinAuthor: (book_id, author_id) => db.none(joinAuthor, [book_id, author_id]),
+  joinGenre: (book_id, genre_id) => db.none(joinGenre, [book_id, genre_id])
 }
 
 const Author = {
