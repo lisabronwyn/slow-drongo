@@ -1,7 +1,18 @@
+<div class="container">
 <form action="/book/new/create" method="post">
 
-  <input type="text" name="title" placeholder="author name">
-  <input type="text" name="description" placeholder="genre"/>
+  <h2>Add a New Book</h2>
+  <!-- <input type="text" name="title" placeholder="author name"> -->
+
+  <div class="form-group">
+    <label for="text">Title</label>
+    <input type="text" class="form-control" name="title" placeholder="Title">
+  </div>
+  <!-- <input type="text" name="description" placeholder="genre"/> -->
+  <div class="form-group">
+    <label for="text">Description</label>
+    <textarea name="description" class="form-control" rows="5" cols="40">Book Description</textarea>
+  </div>
 
   <select name="author_id">
     {{#each authors}}
@@ -17,3 +28,4 @@
 
   <button type="submit">submit</button>
 </form>
+</div>
