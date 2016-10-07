@@ -1,16 +1,12 @@
-<!-- <h1>Welcome to the SLOW-DRONGO bookstore</h1> -->
-
 <div class="books">
   <ul style="list-style-type:none">
-
-    <!-- <a href="/">Home</a> -->
 
     <a class="btn btn-danger" href="/delete/author/{{author.id}}">Delete</a>
     <a class="btn btn-success" href="/update/author/{{author.id}}">Edit</a>
 
     <h2>{{author.name}}</h2>
-    <li>{{author.bio}}</li>
-    <li><img src="{{author.img_url}}" width="300px" height="400px" alt="Image" /></li>
+    <h3>{{author.bio}}</h3>
+    <li><img src="{{author.img_url}}" width="300px" height="200px" alt="Image" /></li>
 
     {{#each books}}
     <a href="/book/{{id}}">

@@ -11,11 +11,9 @@ navbar-toggle collapsed {
   font-size: 25px;
 }
 
-.authors {
-  color: gray;
-  padding: 0px;
-  font-size: 39px;
-  text-align: right;
+.img-responsive thumbnail {
+  margin-top: 10px;
+  padding: 10px 20px 5px 12px;
 }
 
 a {
@@ -60,7 +58,7 @@ p {
 
 .btn-zoomshift {
   padding: 4px 12px;
-  font-size: 18px;
+  font-size: 12px;
   color: black;
   line-height: normal;
   -webkit-border-radius: 8px;
@@ -102,4 +100,7 @@ p {
   display: BLOCK;
   color: #EEE;
   padding: 25.5% 0%;
+  font-family: 'Montserrat';
+  color: black;
+  font-weight: lighter;
 }
