@@ -1,7 +1,7 @@
 <form action="/book/new/create" method="post">
-  
-  <input type="text" name="title"/>
-  <input type="text" name="description"/>
+
+  <input type="text" name="title" placeholder="author name">
+  <input type="text" name="description" placeholder="genre"/>
 
   <select name="author_id">
     {{#each authors}}
@@ -15,5 +15,5 @@
     {{/each}}
   </select>
 
-  <button type="submit"> submit</button>
+  <button type="submit">submit</button>
 </form>

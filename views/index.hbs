@@ -1,28 +1,33 @@
-<!-- NAVIGATION -->
 <div class="container">
   <form role="search" action="/search-books" method="get">
     <div class="form-group form-group-default">
-       <div class="col-lg-6 pull-right">
+       <div class="col-lg-4 pull-right">
       <input type="text" class="form-control input-default" id="inputdefault" name="search_query" placeholder="author or title or genre" />
+      <button type="submit" class="btn-zoomshift pull-right">
+        <span class="glyphicon glyphicon-search" aria-hidden="true" /></span>
+      </button>
     </div>
-    <button type="submit" class="btn-zoomshift">
-      <span class="glyphicon glyphicon-search" aria-hidden="true" /></span>
-    </button>
   </form>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
 
-{{#each books}}
-  <a href="/book/{{id}}">
-    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-      <p>{{title}}</p>
-      <img class="img-responsive thumbnail" src="{{img_url}}" width="300px" height="200px" alt="images">
-    </div>
-  </a>
-{{else}}
-  <h1>Not Found</h1>
-{{/each}}
+<div class="row">
+  {{#each books}}
+      <div class="col-lg-2 col-md-3 col-xs-7">
+          <a href="/book/{{id}}">
+            <p>{{title}}</p>
+        <img class="img-responsive thumbnail" src="{{img_url}}" width="300px" height="200px" alt="images">
+        </a>
+      </div>
+  {{else}}
+    <h1>Not Found</h1>
+  {{/each}}
+</div>
 
-    <ul class="pagination">
-    <li><a href="/?page={{previousPage}}">previous</a></li>
-    <li><a href="/?page={{nextPage}}">next</a></li>
-  </ul>
+<ul class="pagination">
+  <li><a href="/?page={{previousPage}}">Previous</a></li>
+  <li><a href="/?page={{nextPage}}">Next</a></li>
+</ul>
