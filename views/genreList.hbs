@@ -1,16 +1,11 @@
-<h1>Welcome to the SLOW-DRONGO bookstore</h1>
-
 <div class="books">
   <ul style="list-style-type:none">
 
-    <a href="/">Home</a>
-
-
-      <h1>List of All Genres</h1>
+      <h2>List of All Genres</h2>
     {{#each genres}}
       <a href="/genre/{{id}}">
         <h3>{{genre}}</h3>
-        <li>{{description}}</li>
+        <h4>{{description}}</h4>
       </a>
     {{else}}
       <h1>Not Found</h1>
