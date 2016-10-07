@@ -16,6 +16,7 @@ const joinGenre = `insert into book_genres (book_id, genre_id) values ($1,$2)`
 const deleteBook = 'DELETE FROM books WHERE id = $1'
 const deleteAuthor = 'DELETE FROM authors WHERE id = $1'
 const deleteGenre = 'DELETE FROM genres WHERE id = $1'
+const updateBook = 'UPDATE books SET title = $1, description = $2 WHERE id = $3 returning id'
 
 const getAuthorByBookID = `
   SELECT
@@ -107,6 +108,7 @@ const Book = {
   insert: book => db.one( insertBook, [book.title, book.description, "http://lorempixel.com/640/480/nature"]),
   joinAuthor: (book_id, author_id) => db.none(joinAuthor, [book_id, author_id]),
   joinGenre: (book_id, genre_id) => db.none(joinGenre, [book_id, genre_id]),
+  update: book => db.one( updateBook, [  book.title, book.description, parseInt( book.book_id ) ] ),
   delete: book_id => db.none(  deleteBook, [ book_id ] )
 }
 
