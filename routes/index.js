@@ -90,4 +90,9 @@ router.post('/book/new/create', (request, response) => {
     })
 })
 
+router.get( '/delete/book/:book_id', ( request, response ) => {
+  const { book_id } = request.params
+  Book.delete( book_id ).then( () => response.redirect( '/' ) )
+})
+
 module.exports = router
