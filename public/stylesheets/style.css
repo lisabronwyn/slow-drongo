@@ -7,15 +7,8 @@ body {
   background: url(http://www.clearskyy.net/crumpocolypse/upload/dark_wall.png);
 }
 
-a {
-  text-decoration: none;
-  color: #c3ccdb;
-  font-size: 35px;
-  font-family: "Montserrat", "Apple Gothic", sans-serif;
-}
-
 navbar-toggle collapsed {
-  font-size: 35px;
+  font-size: 25px;
 }
 
 .authors {
@@ -26,31 +19,53 @@ navbar-toggle collapsed {
 }
 
 a {
-  color: #00B7FF;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+  font-size: 28px;
+  color: #999;
+  padding: 10px 8px 8px;
 }
 
-h1, .page-header {
+.page-header {
   font-family: 'Open Sans', Georgia, Times, serif;
   font-size: 50px;
   color: white;
   line-height: 60px;
 }
 
+h1 {
+  font-family: 'Open Sans', Georgia, Times, serif;
+  font-size: 25px;
+  color: black;
+  line-height: 60px;
+}
+
+h2, h3 {
+  font-family: arial;
+  color: black;
+}
+
+h4 {
+  font-family: 'Montserrat';
+  color: black;
+  font-weight: lighter;
+}
+
 p {
   font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-  font-size: 31px;
+  font-size: 28px;
   color: gray;
   font-weight: bolder;
   line-height: 25px;
 }
 
 .btn-zoomshift {
-  padding: 16px 24px;
-  font-size: 22px;
+  padding: 4px 12px;
+  font-size: 18px;
+  color: black;
   line-height: normal;
   -webkit-border-radius: 8px;
      -moz-border-radius: 8px;
-          border-radius: 8px;
+          border-radius: 3px;
 }
 
 #nav { width: 100%; margin: 0 auto; overflow:hidden;  }

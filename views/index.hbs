@@ -2,7 +2,7 @@
 <div class="container">
   <form role="search" action="/search-books" method="get">
     <div class="form-group form-group-default">
-       <div class="col-lg-6">
+       <div class="col-lg-6 pull-right">
       <input type="text" class="form-control input-default" id="inputdefault" name="search_query" placeholder="author or title or genre" />
     </div>
     <button type="submit" class="btn-zoomshift">
@@ -22,5 +22,7 @@
   <h1>Not Found</h1>
 {{/each}}
 
-<a href="/?page={{previousPage}}">Previous</a>
-<a href="/?page={{nextPage}}">Next</a>
+    <ul class="pagination">
+    <li><a href="/?page={{previousPage}}">previous</a></li>
+    <li><a href="/?page={{nextPage}}">next</a></li>
+  </ul>
