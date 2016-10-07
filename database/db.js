@@ -17,6 +17,7 @@ const deleteBook = 'DELETE FROM books WHERE id = $1'
 const deleteAuthor = 'DELETE FROM authors WHERE id = $1'
 const deleteGenre = 'DELETE FROM genres WHERE id = $1'
 const updateBook = 'UPDATE books SET title = $1, description = $2 WHERE id = $3 returning id'
+const updateAuthor = 'UPDATE authors SET name = $1, bio = $2 WHERE id = $3 returning id'
 
 const getAuthorByBookID = `
   SELECT
@@ -108,15 +109,16 @@ const Book = {
   insert: book => db.one( insertBook, [book.title, book.description, "http://lorempixel.com/640/480/nature"]),
   joinAuthor: (book_id, author_id) => db.none(joinAuthor, [book_id, author_id]),
   joinGenre: (book_id, genre_id) => db.none(joinGenre, [book_id, genre_id]),
-  update: book => db.one( updateBook, [  book.title, book.description, parseInt( book.book_id ) ] ),
+  update: book => db.one( updateBook, [  book.title, book.description, book.book_id ] ),
   delete: book_id => db.none(  deleteBook, [ book_id ] )
 }
 
 const Author = {
   getAll: () => db.any( getAllAuthors ),
-  getAuthor: author_id => db.one( getAuthor, [ author_id]),
+  getAuthor: author_id => db.one( getAuthor, [ author_id ]),
   getBook: author_id => db.any( getBooksByAuthorID, [author_id]),
-  delete: author_id => db.none( deleteAuthor, [ author_id ] )
+  delete: author_id => db.none( deleteAuthor, [ author_id ] ),
+  update: author => db.one( updateAuthor, [ author.name, author.bio, author.author_id ] )
 }
 
 const Genre = {

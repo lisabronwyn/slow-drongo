@@ -118,4 +118,20 @@ router.post('/update/book/:book_id', ( request, response ) => {
   Book.update( book ).then( book => response.redirect( `/book/${book.id}` ) )
 })
 
+//  -----------------------------------------------------------------------------
+
+router.get( '/update/author/:author_id', ( request, response ) => {
+  const { author_id } = request.params
+
+  Author.getAuthor( author_id ).then( author => response.render( 'update-author', { author } ) )
+})
+
+router.post('/update/author/:author_id', ( request, response ) => {
+  const author = request.body
+  author.author_id = request.params.author_id
+
+  Author.update( author ).then( author => response.redirect( `/author/${author.id}` ) )
+})
+
+
 module.exports = router
