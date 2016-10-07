@@ -2,6 +2,7 @@
 <div class="container">
   <form role="search" action="/search-books" method="get">
     <div class="form-group form-group-default">
+       <div class="col-lg-6">
       <input type="text" class="form-control input-default" id="inputdefault" name="search_query" placeholder="author or title or genre" />
     </div>
     <button type="submit" class="btn-zoomshift">
@@ -9,9 +10,6 @@
     </button>
   </form>
 </div>
-
-<a href="/genre/list">Genre list </a>
-<a href="/authors/list">Authors</a>
 
 {{#each books}}
   <div class="col-lg-3 col-md-4 col-xs-6 thumb">

@@ -12,7 +12,7 @@ router.get('/search-books', ( request, response ) => {
   const { search_query } = request.query
 
   Search.forBooks( search_query ).then( books => {
-    response.send( books )
+    response.render( 'index', {books} )
   })
 })
 
