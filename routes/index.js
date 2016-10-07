@@ -105,4 +105,33 @@ router.get( '/delete/genre/:genre_id', ( request, response ) => {
   Genre.delete( genre_id ).then( () => response.redirect( '/' ) )
 })
 
+router.get( '/update/book/:book_id', ( request, response ) => {
+  const { book_id } = request.params
+
+  Book.getBook( book_id ).then( book => response.render( 'update-book', { book } ) )
+})
+
+router.post('/update/book/:book_id', ( request, response ) => {
+  const book = request.body
+  book.book_id = request.params.book_id
+
+  Book.update( book ).then( book => response.redirect( `/book/${book.id}` ) )
+})
+
+//  -----------------------------------------------------------------------------
+
+router.get( '/update/author/:author_id', ( request, response ) => {
+  const { author_id } = request.params
+
+  Author.getAuthor( author_id ).then( author => response.render( 'update-author', { author } ) )
+})
+
+router.post('/update/author/:author_id', ( request, response ) => {
+  const author = request.body
+  author.author_id = request.params.author_id
+
+  Author.update( author ).then( author => response.redirect( `/author/${author.id}` ) )
+})
+
+
 module.exports = router

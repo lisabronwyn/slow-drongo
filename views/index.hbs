@@ -12,12 +12,12 @@
 </div>
 
 {{#each books}}
-  <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-    <p>{{title}}</p>
-    <a class="thumbnail" href="#">
-      <img class="img-responsive" src="{{img_url}}" width="300px" height="200px" alt="images">
-    </a>
-  </div>
+  <a href="/book/{{id}}">
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+      <p>{{title}}</p>
+      <img class="img-responsive thumbnail" src="{{img_url}}" width="300px" height="200px" alt="images">
+    </div>
+  </a>
 {{else}}
   <h1>Not Found</h1>
 {{/each}}

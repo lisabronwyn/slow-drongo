@@ -104,10 +104,8 @@ const generateBookGenres = () => {
     Promise.resolve( findGenres() )
       .then( genres => {
         const queries = []
-        console.log( "Loaded const queries");
 
         for( let i = 30; i >= 0; i-- ) {
-          console.log("Doing Loop")
           queries.push(
             bookGenres({
               book_id: faker.random.arrayElement( books ).id,
