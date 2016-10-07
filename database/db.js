@@ -4,6 +4,7 @@ const pgp = require('pg-promise')();
 const db = pgp( connectionString );
 
 const getAllBooks = 'SELECT * FROM books'
+const getLimitBooks = "SELECT * FROM books LIMIT $1 OFFSET $2"
 const getAllAuthors = 'SELECT * FROM authors'
 const getAllGenres = 'SELECT * FROM genres'
 const getAuthor = 'SELECT * FROM authors WHERE id=$1'
@@ -97,6 +98,7 @@ const Search = {
 
 const Book = {
   getAll: () => db.any( getAllBooks ),
+  getLimit: (size, page) => db.any (getLimitBooks, [size, (page*size)-size]),
   getBook: book_id => db.one( getBook, [ book_id ] ),
   getAuthor: book_id => db.any( getAuthorByBookID, [ book_id ] ),
   insert: book => db.one( insertBook, [book.title, book.description, "http://lorempixel.com/640/480/nature"]),
