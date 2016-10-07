@@ -95,4 +95,9 @@ router.get( '/delete/book/:book_id', ( request, response ) => {
   Book.delete( book_id ).then( () => response.redirect( '/' ) )
 })
 
+router.get( '/delete/author/:author_id', ( request, response ) => {
+  const { author_id } = request.params
+  Author.delete( author_id ).then( () => response.redirect( '/' ) )
+})
+
 module.exports = router
