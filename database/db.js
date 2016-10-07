@@ -13,6 +13,9 @@ const getBook = 'SELECT * FROM books WHERE id=$1'
 const insertBook = 'insert into books ( title, description, img_url ) values ($1,$2, $3) returning id'
 const joinAuthor = `insert into book_authors ( book_id, author_id ) values ($1,$2,)`
 const joinGenre = `insert into book_genres (book_id, genre_id) values ($1,$2)`
+const deleteBook = 'DELETE FROM books WHERE id = $1'
+const deleteAuthor = 'DELETE FROM authors WHERE id = $1'
+const deleteGenre = 'DELETE FROM genres WHERE id = $1'
 
 const getAuthorByBookID = `
   SELECT
@@ -98,24 +101,27 @@ const Search = {
 
 const Book = {
   getAll: () => db.any( getAllBooks ),
-  getLimit: (size, page) => db.any (getLimitBooks, [size, (page*size)-size]),
+  getLimit: (size, page) => db.any (getLimitBooks, [size, ( page * size ) - size]),
   getBook: book_id => db.one( getBook, [ book_id ] ),
   getAuthor: book_id => db.any( getAuthorByBookID, [ book_id ] ),
   insert: book => db.one( insertBook, [book.title, book.description, "http://lorempixel.com/640/480/nature"]),
   joinAuthor: (book_id, author_id) => db.none(joinAuthor, [book_id, author_id]),
-  joinGenre: (book_id, genre_id) => db.none(joinGenre, [book_id, genre_id])
+  joinGenre: (book_id, genre_id) => db.none(joinGenre, [book_id, genre_id]),
+  delete: book_id => db.none(  deleteBook, [ book_id ] )
 }
 
 const Author = {
   getAll: () => db.any( getAllAuthors ),
   getAuthor: author_id => db.one( getAuthor, [ author_id]),
-  getBook: author_id => db.any( getBooksByAuthorID, [author_id])
+  getBook: author_id => db.any( getBooksByAuthorID, [author_id]),
+  delete: author_id => db.none( deleteAuthor, [ author_id ] )
 }
 
 const Genre = {
   getAll: () => db.any( getAllGenres ),
   getGenre: genre_id => db.one( getGenre, [ genre_id ] ),
-  getBook: genre_id => db.any( getBooksByGenreID, [ genre_id ] )
+  getBook: genre_id => db.any( getBooksByGenreID, [ genre_id ] ),
+  delete: genre_id => db.none( deleteGenre, [ genre_id ] )
 }
 
 

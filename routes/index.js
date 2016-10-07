@@ -90,4 +90,19 @@ router.post('/book/new/create', (request, response) => {
     })
 })
 
+router.get( '/delete/book/:book_id', ( request, response ) => {
+  const { book_id } = request.params
+  Book.delete( book_id ).then( () => response.redirect( '/' ) )
+})
+
+router.get( '/delete/author/:author_id', ( request, response ) => {
+  const { author_id } = request.params
+  Author.delete( author_id ).then( () => response.redirect( '/' ) )
+})
+
+router.get( '/delete/genre/:genre_id', ( request, response ) => {
+  const { genre_id } = request.params
+  Genre.delete( genre_id ).then( () => response.redirect( '/' ) )
+})
+
 module.exports = router
