@@ -5,7 +5,12 @@ const { Book, Author, Search, Genre } = require('../database/db')
 
 /* GET home page. */
 router.get('/', ( request, response ) => {
-  Book.getAll().then( books => response.render( 'index', { books } ) )
+  const {query} = request
+  const page = parseInt( query.page || 1)
+  const size = parseInt( query.size || 10)
+  const nextPage = page + 1
+  const previousPage = page - 1 > 0 ? page -1: 1
+  Book.getLimit(size, page).then( books => response.render( 'index', { books, page, size, nextPage, previousPage } ) )
 })
 
 router.get('/search-books', ( request, response ) => {
