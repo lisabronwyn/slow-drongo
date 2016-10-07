@@ -52,6 +52,20 @@ const findGenres = () => {
   return db.any( sql )
 
 }
+
+const fakeGenres = genre => {
+  const sql = 'INSERT INTO genres( genre ) VALUES ( $1 )'
+  db.none( sql, [ genre.genre ] )
+}
+
+const generateGenres = () => {
+  for( let i = 30; i >= 0; i-- ) {
+    fakeGenres({
+      genre: faker.commerce.color()
+    })
+  }
+}
+
 const bookAuthors = ( ids ) => {
   const sql = 'INSERT INTO book_authors( book_id, author_id ) VALUES ( $1, $2 )'
 
@@ -107,4 +121,10 @@ const generateBookGenres = () => {
   })
 }
 
-module.exports = { generateAuthors,  generateBooks, generateBookAuthors, generateBookGenres }
+module.exports = {
+  generateAuthors,
+  generateBooks,
+  generateBookAuthors,
+  generateBookGenres,
+  generateGenres
+}

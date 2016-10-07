@@ -100,4 +100,9 @@ router.get( '/delete/author/:author_id', ( request, response ) => {
   Author.delete( author_id ).then( () => response.redirect( '/' ) )
 })
 
+router.get( '/delete/genre/:genre_id', ( request, response ) => {
+  const { genre_id } = request.params
+  Genre.delete( genre_id ).then( () => response.redirect( '/' ) )
+})
+
 module.exports = router
